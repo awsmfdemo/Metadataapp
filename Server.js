@@ -59,7 +59,7 @@ app.get('/', function (req, res) {
         publicipv4: values[4],
         publichostname: values[5],
         mac: values[6],
-        privateip: values[8],
+        privateip: ivalues[0],
         iaminfo: JSON.parse(values[7]
         )
       });
