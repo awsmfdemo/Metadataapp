@@ -44,10 +44,11 @@ app.get('/', function (req, res) {
   Promise.all([amiid, instanceid, hostname, instancetype, publicipv4, publichostname, mac, iaminfo]).then((values) => {
     var args = [mac, publicipv4];
     const privateip = metadata.getMetadataForInstance('network/interfaces/macs/mac/ipv4-associations/public-ip', args);
-
+    console.log(args);
     Promise.all([privateip]).then((ivalues) => {
 
       console.log(values);
+      console.log(ivalues);
 
       res.render('pages/index', {
         mascots: mascots,
