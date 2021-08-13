@@ -30,8 +30,8 @@ app.get('/', function (req, res) {
   const mac = metadata.getMetadataForInstance('mac');
   const iaminfo = metadata.getMetadataForInstance('iam/info');
   const az = metadata.getMetadataForInstance('placement/availability-zone');
-  const azid = metadata.getMetadataForInstance('placement/availability-zone-id');
-  const sg = metadata.getMetadataForInstance('security-groups');
+  const azid = "" //metadata.getMetadataForInstance('placement/availability-zone-id');
+  const sg = "" //metadata.getMetadataForInstance('security-groups');
 
   /*const amiid = "ami id";
   const instanceid = "instance id";
