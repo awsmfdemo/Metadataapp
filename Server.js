@@ -20,23 +20,23 @@ app.get('/', function (req, res) {
   var InstanceId = "";
 
 
-  /*const amiid =  metadata.getMetadataForInstance('ami-id');
+  const amiid =  metadata.getMetadataForInstance('ami-id');
   const instanceid =  metadata.getMetadataForInstance('instance-id');
   const hostname =  metadata.getMetadataForInstance('hostname');
   const instancetype =  metadata.getMetadataForInstance('instance-type');
   const publicipv4 =  metadata.getMetadataForInstance('public-ipv4');
   const publichostname =  metadata.getMetadataForInstance('public-hostname');
   const mac = metadata.getMetadataForInstance('mac');
-  const iaminfo = metadata.getMetadataForInstance('iam/info');*/
+  const iaminfo = metadata.getMetadataForInstance('iam/info');
 
-  const amiid = "ami id";
+  /*const amiid = "ami id";
   const instanceid = "instance id";
   const hostname = "hostname";
   const instancetype = "instancetype";
   const publicipv4 = "public ipv4";
   const publichostname = "public hostname";
   const mac = "mac";
-  const iaminfo = "iam";
+  const iaminfo = "iam";*/
 
   Promise.all([amiid, instanceid, hostname, instancetype, publicipv4, publichostname, mac, iaminfo]).then((values) => {
     
