@@ -30,7 +30,8 @@ app.get('/', function (req, res) {
   const mac = metadata.getMetadataForInstance('mac');
   const iaminfo = metadata.getMetadataForInstance('iam/info');
   const az = metadata.getMetadataForInstance('placement/availability-zone');
-
+  const azid = metadata.getMetadataForInstance('placement/availability-zone-id');
+  const sg = metadata.getMetadataForInstance('security-groups');
 
   /*const amiid = "ami id";
   const instanceid = "instance id";
@@ -41,11 +42,19 @@ app.get('/', function (req, res) {
   const mac = "mac";
   const iaminfo = "iam";*/
 
-  Promise.all([amiid, instanceid, hostname, instancetype, publicipv4, publichostname, mac, iaminfo, az]).then((values) => {
+  Promise.all([amiid, instanceid, hostname, instancetype, publicipv4, publichostname, mac, iaminfo, az, azid, sg]).then((values) => {
     var args = [values[6], values[4]];
+    var margs = [Values[6]];
     const privateip = metadata.getMetadataForInstance('network/interfaces/macs/mac/ipv4-associations/public-ip', args);
-   
-    Promise.all([privateip]).then((ivalues) => {
+    const devicenumber = metadata.getMetadataForInstance('network/interfaces/macs/mac/device-number', margs);
+    const networkinterface = metadata.getMetadataForInstance('network/interfaces/macs/mac/interface-id', margs);
+    const subnetid = metadata.getMetadataForInstance('network/interfaces/macs/mac/subnet-id', margs);
+    const subnetcidr = metadata.getMetadataForInstance('network/interfaces/macs/mac/subnet-ipv4-cidr-block', margs);
+    const vpcid = metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-id', margs);
+    const vpccidr = metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-ipv4-cidr-block', margs);
+    const vpccidrs = metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-ipv4-cidr-blocks', margs);
+
+    Promise.all([privateip,devicenumber,networkinterface,subnetid,subnetcidr,vpcid,vpccidr,vpccidrs]).then((ivalues) => {
 
       console.log(values);
       console.log(ivalues);
@@ -60,9 +69,18 @@ app.get('/', function (req, res) {
         publicipv4: values[4],
         publichostname: values[5],
         mac: values[6],
-        privateip: ivalues[0],
         iaminfo: JSON.parse(values[7]),
-        az:values[8]
+        az:values[8],
+        azid: values[9],
+        sg:values[10],
+        privateip: ivalues[0],
+        devicenumber: ivalues[1],
+        networkinterface: ivalues[2],
+        subnetid: ivalues[3],
+        subnetcidr: ivalues[4],
+        vpcid: ivalues[5],
+        vpccidr: ivalues[6],
+        vpccidrs: ivalues[7]
       });
 
     });
