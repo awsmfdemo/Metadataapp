@@ -23,17 +23,19 @@ app.get('/', function(req, res) {
   .then(function(instanceId) {
       console.log("Instance ID: " + instanceId);
       InstanceId = instanceId;
+
+      res.render('pages/index', {
+        mascots: mascots,
+        tagline: tagline,
+        Instanceid: InstanceId
+      });
   })
   .fail(function(error) {
       console.log("Error: " + error);
   });
 
 
-  res.render('pages/index', {
-    mascots: mascots,
-    tagline: tagline,
-    Instanceid: InstanceId
-  });
+
 });
 
 // about page
