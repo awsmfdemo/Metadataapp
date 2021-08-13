@@ -52,7 +52,7 @@ app.get('/', function (req, res) {
     const subnetcidr = metadata.getMetadataForInstance('network/interfaces/macs/mac/subnet-ipv4-cidr-block', margs);
     const vpcid = metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-id', margs);
     const vpccidr = metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-ipv4-cidr-block', margs);
-    const vpccidrs = metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-ipv4-cidr-blocks', margs);
+    const vpccidrs = "" //metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-ipv4-cidr-blocks', margs);
 
     Promise.all([privateip,devicenumber,networkinterface,subnetid,subnetcidr,vpcid,vpccidr,vpccidrs]).then((ivalues) => {
 
