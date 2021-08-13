@@ -40,6 +40,8 @@ app.get('/', function (req, res) {
 
   Promise.all([amiid, instanceid, hostname, instancetype, publicipv4, publichostname, mac, iaminfo]).then((values) => {
     
+    console.log(values);
+
     res.render('pages/index', {
       mascots: mascots,
       tagline: tagline,
