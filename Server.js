@@ -46,13 +46,13 @@ app.get('/', function (req, res) {
     var args = [values[6], values[4]];
     var margs = [values[6]];
     const privateip = metadata.getMetadataForInstance('network/interfaces/macs/mac/ipv4-associations/public-ip', args);
-    const devicenumber = "" //metadata.getMetadataForInstance('network/interfaces/macs/mac/device-number', margs);
-    const networkinterface = "" //metadata.getMetadataForInstance('network/interfaces/macs/mac/interface-id', margs);
-    const subnetid = "" //metadata.getMetadataForInstance('network/interfaces/macs/mac/subnet-id', margs);
-    const subnetcidr = "" //metadata.getMetadataForInstance('network/interfaces/macs/mac/subnet-ipv4-cidr-block', margs);
-    const vpcid = "" //metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-id', margs);
-    const vpccidr = "" //metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-ipv4-cidr-block', margs);
-    const vpccidrs = "" //metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-ipv4-cidr-blocks', margs);
+    const devicenumber = metadata.getMetadataForInstance('network/interfaces/macs/mac/device-number', margs);
+    const networkinterface = metadata.getMetadataForInstance('network/interfaces/macs/mac/interface-id', margs);
+    const subnetid = metadata.getMetadataForInstance('network/interfaces/macs/mac/subnet-id', margs);
+    const subnetcidr = metadata.getMetadataForInstance('network/interfaces/macs/mac/subnet-ipv4-cidr-block', margs);
+    const vpcid = metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-id', margs);
+    const vpccidr = metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-ipv4-cidr-block', margs);
+    const vpccidrs = metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-ipv4-cidr-blocks', margs);
 
     Promise.all([privateip,devicenumber,networkinterface,subnetid,subnetcidr,vpcid,vpccidr,vpccidrs]).then((ivalues) => {
 
