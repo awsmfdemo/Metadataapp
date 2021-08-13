@@ -41,7 +41,7 @@ app.get('/', function (req, res) {
   const mac = "mac";
   const iaminfo = "iam";*/
 
-  Promise.all([amiid, instanceid, hostname, instancetype, publicipv4, publichostname, mac, iaminfo, privateip]).then((values) => {
+  Promise.all([amiid, instanceid, hostname, instancetype, publicipv4, publichostname, mac, iaminfo]).then((values) => {
     var args = [mac, publicipv4];
     const privateip = metadata.getMetadataForInstance('network/interfaces/macs/mac/ipv4-associations/public-ip', args);
 
