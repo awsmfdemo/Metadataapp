@@ -30,7 +30,7 @@ app.get('/', function (req, res) {
   const iaminfo = metadata.getMetadataForInstance('iam/info');
 
   var args = [ mac, publicipv4];
-  const privateip = metadata.getMetadataForInstance('network/interfaces/macs/mac/ipv4-associations/public-ip', args);
+  const privateip = metadata.getMetadataForInstance('network/interfaces/macs/mac/ipv4-associations/public-ip', [metadata.getMetadataForInstance('mac'),metadata.getMetadataForInstance('public-ipv4')]);
 
   /*const amiid = "ami id";
   const instanceid = "instance id";
