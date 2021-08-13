@@ -52,7 +52,7 @@ app.get('/', function (req, res) {
       publicipv4: values[4],
       publichostname: values[5],
       mac: values[6],
-      iaminfo: values[7]
+      iaminfo: JSON.stringify(values[7])
     });
 
   });
