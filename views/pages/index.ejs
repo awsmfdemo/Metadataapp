@@ -74,13 +74,11 @@
             <td>Instance Profile</td>
             <td> 
               <ul>
-                <% iaminfo.forEach(function(values) { %>
                   <li>
                     <strong>
-                      <%= values %>
+                      <%= iaminfo.InstanceProfileArn %>
                     </strong> 
                   </li>
-                  <% }); %>
               </ul>
             </td>
           </tr>
