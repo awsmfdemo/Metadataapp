@@ -47,8 +47,8 @@ app.get('/', function (req, res) {
     var margs = [values[6]];
     const privateip = metadata.getMetadataForInstance('network/interfaces/macs/mac/ipv4-associations/public-ip', args);
     const devicenumber = metadata.getMetadataForInstance('network/interfaces/macs/mac/device-number', margs);
-    const networkinterface = metadata.getMetadataForInstance('network/interfaces/macs/mac/interface-id', margs);
-    const subnetid = "" //metadata.getMetadataForInstance('network/interfaces/macs/mac/subnet-id', margs);
+    const networkinterface = "" //metadata.getMetadataForInstance('network/interfaces/macs/mac/interface-id', margs);
+    const subnetid = metadata.getMetadataForInstance('network/interfaces/macs/mac/subnet-id', margs);
     const subnetcidr = "" //metadata.getMetadataForInstance('network/interfaces/macs/mac/subnet-ipv4-cidr-block', margs);
     const vpcid = "" //metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-id', margs);
     const vpccidr = "" //metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-ipv4-cidr-block', margs);
