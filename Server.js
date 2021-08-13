@@ -19,32 +19,31 @@ app.get('/', function(req, res) {
 
   var InstanceId = "";
 
-  Q.all([
-    metadata.getMetadataForInstance('ami-id'),
-    metadata.getMetadataForInstance('hostname'),
-    metadata.getMetadataForInstance('public-hostname'),
-    metadata.getMetadataForInstance('public-ipv4'),
-])
-.spread(function(amiID, hostname, publicHostname, publicIPv4) {
-    console.log("AMI-ID: " + amiID);
-    console.log("Hostname: " + hostname);
-    console.log("Public Hostname: " + publicHostname);
-    console.log("Public IPv4: " + publicIPv4);
-})
-.fail(function(error) {
-    console.log("Error: " + error);
+
+  const amiid =  metadata.getMetadataForInstance('ami-id');
+  const instanceid =  metadata.getMetadataForInstance('instance-id');
+  const hostname =  metadata.getMetadataForInstance('hostname');
+  const instancetype =  metadata.getMetadataForInstance('instance-type');
+  const publicipv4 =  metadata.getMetadataForInstance('public-ipv4');
+  const publichostname =  metadata.getMetadataForInstance('public-hostname');
+  const mac = metadata.getMetadataForInstance('mac');
+  const iaminfo = metadata.getMetadataForInstance('iam/info');
+
+  Promise.all([amiid, instanceid, hostname, instancetype, publicipv4, publichostname, mac, iaminfo]).then((values) => {
+    console.log(values);
+
+    res.render('pages/index', {
+      mascots: mascots,
+      tagline: tagline,
+      Instanceid: values
+    });
+
 });
 
   metadata.getMetadataForInstance('instance-id')
   .then(function(instanceId) {
       console.log("Instance ID: " + instanceId);
       InstanceId = instanceId;
-
-      res.render('pages/index', {
-        mascots: mascots,
-        tagline: tagline,
-        Instanceid: InstanceId
-      });
   })
   .fail(function(error) {
       console.log("Error: " + error);
@@ -62,13 +61,7 @@ app.get('/about', function(req, res) {
 
 
  
-metadata.getMetadataForInstance('instance-id')
-.then(function(instanceId) {
-    console.log("Instance ID: " + instanceId);
-})
-.fail(function(error) {
-    console.log("Error: " + error);
-});
+
 
 app.listen(8080);
 console.log('Server is listening on port 8080');
