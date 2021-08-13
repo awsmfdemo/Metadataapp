@@ -72,7 +72,17 @@
           <tr>
             <th scope="row">8</th>
             <td>Instance Profile</td>
-            <td> <%= iaminfo %></td>
+            <td> 
+              <ul>
+                <% iaminfo.forEach(function(values) { %>
+                  <li>
+                    <strong>
+                      <%= values %>
+                    </strong> 
+                  </li>
+                  <% }); %>
+              </ul>
+            </td>
           </tr>
 
         </tbody>
