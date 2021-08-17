@@ -31,7 +31,7 @@ app.get('/', function (req, res) {
   const iaminfo = metadata.getMetadataForInstance('iam/info');
   const az = metadata.getMetadataForInstance('placement/availability-zone');
   const azid = ""; //metadata.getMetadataForInstance('placement/availability-zone-id');
-  const sg =  metadata.getMetadataForInstance('security-groups');
+  const sg = metadata.getMetadataForInstance('security-groups');
 
   /*const amiid = "ami id";
   const instanceid = "instance id";
@@ -54,7 +54,7 @@ app.get('/', function (req, res) {
     const vpccidr = metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-ipv4-cidr-block', margs);
     const vpccidrs = "" //metadata.getMetadataForInstance('network/interfaces/macs/mac/vpc-ipv4-cidr-blocks', margs);
 
-    Promise.all([privateip,devicenumber,networkinterface,subnetid,subnetcidr,vpcid,vpccidr,vpccidrs]).then((ivalues) => {
+    Promise.all([privateip, devicenumber, networkinterface, subnetid, subnetcidr, vpcid, vpccidr, vpccidrs]).then((ivalues) => {
 
       console.log(values);
       console.log(ivalues);
@@ -70,9 +70,9 @@ app.get('/', function (req, res) {
         publichostname: values[5],
         mac: values[6],
         iaminfo: JSON.parse(values[7]),
-        az:values[8],
+        az: values[8],
         azid: values[9],
-        sg:values[10],
+        sg: values[10],
         privateip: ivalues[0],
         devicenumber: ivalues[1],
         networkinterface: ivalues[2],
@@ -97,10 +97,6 @@ app.get('/about', function (req, res) {
 
   res.render('pages/about');
 });
-
-
-
-
 
 app.listen(8080);
 console.log('Server is listening on port 8080');
